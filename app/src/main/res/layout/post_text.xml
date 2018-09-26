@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/rlParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_height="60dp"
+                android:layout_weight=".5"
+                android:padding="1dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/userone"
+                android:layout_width="0dp"
+                android:contentDescription="@string/app_name" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:paddingRight="5dp"
+                android:layout_weight="1.5">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/myCustomTextStyle"
+                        android:singleLine="false"
+                        android:text="الاسم الكامل"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/inTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/myCustomTextStyle"
+                        android:singleLine="false"
+                        android:text="فى"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:visibility="gone"
+                        android:textColor="#000000"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvPlace"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/myCustomTextStyle"
+                        android:singleLine="false"
+                        android:text="cairo"
+                        android:visibility="gone"
+                        android:textStyle="italic"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingRight="5dp">
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        style="@style/myCustomTextStyle"
+                        android:singleLine="true"
+                        android:text="19:45"
+                        android:textColor="#ABAFB7"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/dayTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        style="@style/myCustomTextStyle"
+                        android:singleLine="true"
+                        android:text="اليوم"
+                        android:layout_marginRight="5dp"
+                        android:textColor="#ABAFB7"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="right"
+            android:paddingRight="10dp"
+            android:singleLine="false"
+            style="@style/myCustomTextStyle"
+            android:text=""
+            android:textColor="#1c1f28"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

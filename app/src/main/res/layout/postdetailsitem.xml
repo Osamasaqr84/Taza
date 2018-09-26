@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:id="@+id/rlParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_height="60dp"
+                    android:layout_weight=".5"
+                    android:padding="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/userone"
+                    android:layout_width="0dp"
+                    android:contentDescription="@string/app_name" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1.5">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/myCustomTextStyle"
+                        android:singleLine="false"
+                        android:text="الاسم الكامل"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingRight="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="true"
+                            android:text="اليوم"
+                            android:layout_marginRight="5dp"
+                            android:textColor="#ABAFB7"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="true"
+                            android:text="19:45"
+                            android:textColor="#ABAFB7"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:paddingRight="10dp"
+                android:singleLine="false"
+                style="@style/myCustomTextStyle"
+                android:text=""
+                android:textColor="#1c1f28"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="13sp" />
+
+
+            <ImageView
+                android:id="@+id/image_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="right">
+
+                <TextView
+                    android:id="@+id/likesCounts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3,835"
+                    android:textColor="#b6b6b6"
+                    android:layout_marginLeft="5dp"
+                    style="@style/myCustomTextStyle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اعجاب"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#a1a1a1"
+                    style="@style/myCustomTextStyle" />
+
+                <TextView
+                    android:id="@+id/commentsCounts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2,539"
+                    android:textColor="#b6b6b6"
+                    android:layout_marginLeft="5dp"
+                    style="@style/myCustomTextStyle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تعليق"
+                    android:textColor="#a1a1a1"
+                    style="@style/myCustomTextStyle" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dfdfdf" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/likelayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/like_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/myCustomTextStyle"
+                        android:textColor="#495764"
+                        android:text="@string/like" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#dfdfdf" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/comment_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/myCustomTextStyle"
+                        android:textColor="#495764"
+                        android:text="@string/comment" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#dfdfdf" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/share_icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/myCustomTextStyle"
+                        android:textColor="#495764"
+                        android:text="@string/share" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dfdfdf" />
+
+            <!--<android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="3dp"
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/userImage"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/userone"
+                        android:layout_gravity="center"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:background="@drawable/back_comment"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="13dp">
+
+                        <TextView
+                            android:id="@+id/userName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/myCustomTextStyle"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:text="Mohamed jaber jabarin"/>
+                        <TextView
+                            android:id="@+id/userComment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/myCustomTextStyle"
+                            android:textSize="14sp"
+                            android:text="الطشة معك بتفتح النفس"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="90dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="إعجاب"
+                        style="@style/myCustomTextStyle"
+                        android:textSize="11sp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="رد"
+                        style="@style/myCustomTextStyle"
+                        android:textSize="11sp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"/>
+
+                    <TextView
+                        android:id="@+id/commentTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 س"
+                        style="@style/myCustomTextStyle"
+                        android:textSize="11sp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="5dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#dfdfdf"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="1"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    style="@style/myCustomTextStyle"
+                    android:textColor="#4B5A66"
+                    android:layout_weight=".9"
+                    android:textSize="12sp"
+                    android:hint="اكتب تعليقك ..."
+                    android:background="@drawable/back_edittext" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight=".1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_image_comment"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/myCustomTextStyle"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="إضافة"/>-->
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

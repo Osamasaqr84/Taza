@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.osamaomar.akhbarak">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:name=".Helper.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        tools:replace="supportsRtl"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.zfdang.multiple_images_selector.ImagesSelectorActivity"
+            android:configChanges="orientation|screenSize"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <activity
+            android:name=".Activities.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+         <activity android:name=".Activities.PostDetailsActivity"
+            android:label="@string/title_activity_details" >
+
+        <meta-data
+        android:name="android.support.PARENT_ACTIVITY"
+        android:value=".Activities.MainActivity"/>
+
+      </activity>
+        <activity android:name=".Activities.ImageDetails"
+          />
+
+        <activity
+            android:name=".Activities.Register.Register1Activity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:label="@string/title_activity_register1"/>
+
+        <activity android:name=".Activities.Register.Register2Activity"
+            android:label="@string/title_activity_register2">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.Register.Register1Activity"/>
+        </activity>
+        <activity android:name=".Activities.Register.Register3Activity"
+            android:label="@string/title_activity_register2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.Register.Register2Activity"/>
+        </activity>
+        <activity android:name=".Activities.Register.Register4Activity"
+            android:label="@string/title_activity_register2">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.Register.Register3Activity"/>
+        </activity>
+        <activity android:name=".Activities.Register.Register5Activity"
+            android:label="@string/title_activity_register2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.Register.Register4Activity"/>
+        </activity>
+        <activity android:name=".Activities.Register.Register6Activity"
+            android:label="@string/title_activity_register2">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.Register.Register5Activity"/>
+        </activity>
+        <activity android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity"/>
+        </activity>
+        <activity android:name=".Activities.SettingActivity"
+            android:label="@string/title_activity_settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity"/>
+        </activity>
+
+        <activity android:name=".Activities.HashtagsActivity"
+            android:label="@string/title_activity_hashtags">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Activities.MainActivity"/>
+        </activity>
+        <activity android:name=".Activities.SearchActivity"
+            android:label="@string/title_activity_search">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".Activities.CreatePostActivity"
+            android:label="@string/title_activity_create_post"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".Activities.MapActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".Activities.mappActivity" />
+
+        <activity android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+
+        </activity>
+
+        <activity
+            android:name=".Activities.MapsActivity"
+            android:label="@string/title_activity_maps" />
+
+        <activity
+            android:name=".Activities.MapsActivity2"
+            android:label="@string/title_activity_maps2"/>
+
+        <service android:name=".Helper.FCM.MyFirebaseMessagingService"
+            android:exported="false"
+            tools:ignore="InnerclassSeparator">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGE_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".Helper.FCM.MyFirebaseInstanceIDService"
+            android:exported="false"
+            tools:ignore="InnerclassSeparator">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

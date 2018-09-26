@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:id="@+id/rlParent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_height="60dp"
+                    android:layout_weight=".5"
+                    android:padding="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/userone"
+                    android:layout_width="0dp"
+                    tools:ignore="RtlHardcoded"
+                    android:contentDescription="@string/app_name" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1.4">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="false"
+                            android:text="الاسم الكامل"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/inTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="false"
+                            android:text="فى"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:visibility="gone"
+                            android:textColor="#000000"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/tvPlace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="false"
+                            android:text="cairo"
+                            android:visibility="gone"
+                            android:textStyle="italic"
+                            android:textColor="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingRight="5dp">
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="true"
+                            android:text="19:45"
+                            android:textColor="#ABAFB7"
+                            android:textSize="14sp"/>
+                        <TextView
+                            android:id="@+id/dayTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            style="@style/myCustomTextStyle"
+                            android:singleLine="true"
+                            android:text="اليوم"
+                            android:layout_marginRight="5dp"
+                            android:textColor="#ABAFB7"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:src="@drawable/ic_options_post"
+                    android:contentDescription="@string/app_name" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:paddingRight="15dp"
+                android:singleLine="false"
+                style="@style/myCustomTextStyle"
+                android:text=""
+                android:textColor="#1c1f28"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.osamaomar.akhbarak.Assymetric.AsymmetricRecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="3dp"
+                android:fadingEdge="none"
+                android:focusable="false"
+                android:gravity="center"
+                android:listSelector="#00000000"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <ImageView
+                        android:id="@+id/image1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/q"
+                        android:padding="2dp"
+                        android:visibility="gone"
+                        android:adjustViewBounds="true"/>
+                    <ImageView
+                        android:id="@+id/vid_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_action_play"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/q"
+                    android:padding="2dp"
+                    android:visibility="gone"
+                    android:adjustViewBounds="true"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/likesCounts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3,835"
+                    android:textColor="#b6b6b6"
+                    android:layout_marginLeft="5dp"
+                    style="@style/myCustomTextStyle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="اعجاب"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#a1a1a1"
+                    style="@style/myCustomTextStyle"
+                    />
+
+                <TextView
+                    android:id="@+id/commentsCounts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2,539"
+                    android:textColor="#b6b6b6"
+                    android:layout_marginLeft="5dp"
+                    style="@style/myCustomTextStyle"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تعليق"
+                    android:textColor="#a1a1a1"
+                    style="@style/myCustomTextStyle"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#dfdfdf"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/likelayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/like_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/myCustomTextStyle"
+                        android:textColor="#495764"
+                        android:text="@string/like"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#dfdfdf"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/comment_icon"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/myCustomTextStyle"
+                        android:textColor="#495764"
+                        android:text="@string/comment"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="#dfdfdf"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:src="@drawable/share_icon"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/myCustomTextStyle"
+                        android:textColor="#495764"
+                        android:text="@string/share"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
