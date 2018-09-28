@@ -1,8 +1,6 @@
 package com.osamaomar.akhbarak.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,14 +10,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.osamaomar.akhbarak.Activities.RebliesActivity;
 import com.osamaomar.akhbarak.R;
 import com.osamaomar.akhbarak.model.CommentsModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder>{
+public class RebliesAdapter extends RecyclerView.Adapter<RebliesAdapter.ViewHolder>{
 
     private Context context;
   //  private List<Drawable> mList = new ArrayList<>();
@@ -30,7 +27,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 //        nameuser = name;
 //        commentuser = comment;
 //    }
-    public CommentsAdapter(Context activity,List<CommentsModel.DataBean> list) {
+    public RebliesAdapter(Context activity, List<CommentsModel.DataBean> list) {
         context = activity;
         mList=list;
     }
@@ -39,7 +36,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.comment_item, parent,false);
+                .inflate(R.layout.reblies_item, parent,false);
         return new ViewHolder(view);
     }
 
@@ -52,15 +49,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             holder.commentimg.setVisibility(View.VISIBLE);
             Glide.with(context).load(mList.get(position).getPhotoUrl()).into(holder.commentimg);
         }
-        holder.rebly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(context, RebliesActivity.class);
-                intent.putExtra("commentid",mList.get(position).getCommentId());
-                context.startActivity(intent);
-            }
-        });
 
     }
 
@@ -73,7 +61,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         final View mView;
         ImageView imageProfile,commentimg;
-        TextView userName,commentTime,commentTxt,countLikes,countComments,rebly;
+        TextView userName,commentTime,commentTxt,countLikes,countComments;
         RecyclerView recyclerView;
 
         public ViewHolder(View view) {
@@ -85,7 +73,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             commentTime = mView.findViewById(R.id.commentTime);
             commentTxt = mView.findViewById(R.id.userComment);
             commentimg = mView.findViewById(R.id.comment_img);
-            rebly = mView.findViewById(R.id.rebly);
 
         }
     }

@@ -84,7 +84,6 @@ public class CreatePostActivity extends AppCompatActivity {
     String  start_log="";
     String  cityname="";
     String encoded ="";
-    Uri uriVideo;
     EditText tvTitle;
     PreferenceHelper preferenceHelper;
     private static final int REQUEST_CODE = 123;
@@ -94,8 +93,7 @@ public class CreatePostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         tvTitle =findViewById(R.id.tvTitle);
         recyclerViewGallery = findViewById(R.id.images_recycler);
         recyclerViewvideos = findViewById(R.id.videos_recycler);
@@ -117,7 +115,7 @@ public class CreatePostActivity extends AppCompatActivity {
         if (Videosparts.size()>0)
          call = apiService.ADDPost(
                 partList,
-                 createPartFromString(encoded),
+                 firstVideospart,
                  Videosparts.get(0),
                 createPartFromString(userId),
                 createPartFromString(title),
@@ -128,7 +126,6 @@ public class CreatePostActivity extends AppCompatActivity {
         );
 
         else
-
             call = apiService.ADDPost2(
                     partList,
                     createPartFromString(""),
@@ -329,10 +326,16 @@ public class CreatePostActivity extends AppCompatActivity {
     }
 
     private Uri getImageUri(Context context, Bitmap inImage) {
-
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+        String path="";
+        try {
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+             path = MediaStore.Images.Media.insertImage(context.getContentResolver(), inImage, "Title", null);
+        }
+        catch (Exception e)
+        {
+            Log.d("ds",e.getMessage());
+        }
         return Uri.parse(path);
     }
 
@@ -368,19 +371,20 @@ public class CreatePostActivity extends AppCompatActivity {
             Bitmap bitmap2 = ThumbnailUtils.createVideoThumbnail(filePath, MediaStore.Video.Thumbnails.FULL_SCREEN_KIND);
             images.add(bitmap2);
 
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap2.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            byte[] byteArray = byteArrayOutputStream .toByteArray();
-             encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
-         //   Uri uriVideo =  getImageUri(CreatePostActivity.this,bitmap2);
-//            firstVideospart =prepareFilePart("Photo" , uriVideo,0);
-//            mArrayUriVideos.add(videoURI);
+//            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//            bitmap2.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+//            byte[] byteArray = byteArrayOutputStream .toByteArray();
+//             encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
 
-//            if (mArrayUriVideos.size() > 0) {
-//                for (int i = 0; i < mArrayUriVideos.size(); i++) {
-//                    Videosparts.add(prepareFilePart("Video" , mArrayUriVideos.get(i),1));
-//                }
-//            }
+            Uri uriVideo =  getImageUri(CreatePostActivity.this,bitmap2);
+            firstVideospart =prepareFilePart("Photo" , uriVideo,0);
+
+            mArrayUriVideos.add(videoURI);
+            if (mArrayUriVideos.size() > 0){
+                for (int i = 0; i < mArrayUriVideos.size(); i++) {
+                    Videosparts.add(prepareFilePart("Video" , mArrayUriVideos.get(i),1));
+                }
+            }
         }
 
         videosAdapter = new ImagesAdapterForAddVideos (getApplicationContext(),images);
@@ -527,7 +531,7 @@ public class CreatePostActivity extends AppCompatActivity {
             if (tvTitle.getText().toString().matches(""))
                 tvTitle.setError("ادخل وصف الخبر ");
             else {
-                addPost("2", tvTitle.getText().toString(), parts,
+                addPost(preferenceHelper.getUserId(), tvTitle.getText().toString(), parts,
                         cityname, start_lat, start_log);
             }
         } else

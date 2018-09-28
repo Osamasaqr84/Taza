@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#ffffff"
     android:paddingBottom="10dp">
@@ -92,6 +94,7 @@
             android:background="#dfdfdf" />
 
         <LinearLayout
+            android:id="@+id/comment_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -255,8 +258,8 @@
             />
 
     </LinearLayout>
-
     <LinearLayout
+        android:id="@+id/commentlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -265,26 +268,100 @@
         android:weightSum="1"
         android:orientation="horizontal">
 
-        <EditText
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            style="@style/myCustomTextStyle"
-            android:textColor="#4B5A66"
-            android:layout_weight=".9"
-            android:textSize="12sp"
-            android:hint="اكتب تعليقك ..."
-            android:background="@drawable/back_edittext" />
+            android:layout_weight="0.85"
+            android:layout_marginTop="4dp"
+            >
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/commenttext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:singleLine="false"
+                    style="@style/myCustomTextStyle"
+                    android:textColor="#4B5A66"
+                    android:textSize="12sp"
+                    android:background="@drawable/back_edittext"
+                    android:hint="اكتب تعليقك..."
+                    />
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/commentimg"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/commenttext"
+                    android:src="@drawable/userone"
+
+                    />
+                <ImageView
+                    android:id="@+id/imgcancel"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:onClick="deleteimg"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/commenttext"
+                    android:src="@drawable/ic_action_cancel"
+                    />
+            </android.support.constraint.ConstraintLayout>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:onClick="sendcomment"
+                android:src="@drawable/ic_send_send_24dp"
+                android:layout_alignParentLeft="true"
+                />
+        </RelativeLayout>
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_weight=".1"
+            android:id="@+id/getimages"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="3dp"
+            android:layout_weight=".15"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_image_comment"
-            android:layout_gravity="center" />
+            android:layout_gravity="top" />
 
     </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginStart="5dp"-->
+        <!--android:layout_marginEnd="5dp"-->
+        <!--android:weightSum="1"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<EditText-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:inputType="text"-->
+            <!--style="@style/myCustomTextStyle"-->
+            <!--android:textColor="#4B5A66"-->
+            <!--android:layout_weight=".9"-->
+            <!--android:textSize="12sp"-->
+            <!--android:hint="اكتب تعليقك ..."-->
+            <!--android:background="@drawable/back_edittext" />-->
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/getimages"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:layout_weight=".1"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:src="@drawable/ic_image_comment"-->
+            <!--android:layout_gravity="center" />-->
+
+    <!--</LinearLayout>-->
 
 </LinearLayout>

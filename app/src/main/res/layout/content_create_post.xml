@@ -107,9 +107,9 @@
 
             </RelativeLayout>
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <!--<ScrollView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                         />
 
                 </LinearLayout>
-            </ScrollView>
+            <!--</ScrollView>-->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

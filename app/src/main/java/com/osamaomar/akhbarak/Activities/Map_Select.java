@@ -80,7 +80,6 @@ public class Map_Select extends android.support.v4.app.Fragment implements OnMap
     private Location myLocation;
     ImageView myLocationbtn;
     ScrollView scrolling;
-
     String send_lat;
     String send_lng;
     private String key;
@@ -154,10 +153,6 @@ public class Map_Select extends android.support.v4.app.Fragment implements OnMap
 
         return view;
     }///// End of Fragment OnCreate
-
-
-
-
 
     public void permission() {
         final Dialog dialog = new Dialog(getActivity(), android.R.style.Theme_Translucent_NoTitleBar);
@@ -280,8 +275,6 @@ public class Map_Select extends android.support.v4.app.Fragment implements OnMap
         if (location != null) {
             currentLatitude = location.getLatitude();
             currentLongitude = location.getLongitude();
-
-
             myLocation = location;
             // isLocationEnable = true;
             goToAddress(currentLatitude, currentLongitude);

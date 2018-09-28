@@ -1,5 +1,6 @@
 package com.osamaomar.akhbarak.API;
 
+import com.osamaomar.akhbarak.model.CommentsModel;
 import com.osamaomar.akhbarak.model.GetPostsModel;
 import com.osamaomar.akhbarak.model.LoginModel;
 import com.osamaomar.akhbarak.model.MailValidationModel;
@@ -23,7 +24,13 @@ public interface ApiInterface {
 
     @GET("GetPosts/{pagination_id}")
     @Headers("Accept: Application/json")
-    Call<GetPostsModel> getPostsData(@Path("pagination_id") String pagination_id);
+    Call<GetPostsModel> getPostsData(
+            @Path("pagination_id") String pagination_id);
+
+    @GET("PostComments/{post_id}")
+    @Headers("Accept: Application/json")
+    Call<CommentsModel> getCommentsData(
+            @Path("post_id") String post_id);
 
 
     @GET("Tags/{rowsnum}")
@@ -43,7 +50,7 @@ public interface ApiInterface {
             @Part("Token") RequestBody Token,
             @Part("CityId") RequestBody CityId,
             @Part("Password") RequestBody Password,
-            @Part("Photo") RequestBody Photo
+            @Part MultipartBody.Part Photo
     );
 
     @Multipart
@@ -64,7 +71,7 @@ public interface ApiInterface {
     @POST("AddPost")
     Call<ResponseBody> ADDPost(
             @Part List<MultipartBody.Part> files,
-            @Part  ("Photo") RequestBody videoImage,
+            @Part  ("Photo") MultipartBody.Part videoImage,
             @Part  MultipartBody.Part video,
             @Part("UserId") RequestBody UserId,
             @Part("Title") RequestBody Title,
@@ -87,4 +94,33 @@ public interface ApiInterface {
             @Part("Place_name") RequestBody Place_name,
             @Part("TagId") RequestBody TagId
     );
+
+
+
+    @GET("LikeComment/{UserId}/{CommentId}")
+    @Headers("Accept: Application/json")
+    Call<ResponseBody> makeLike(
+            @Path("UserId") String UserId,
+            @Path("CommentId") String CommentId);
+
+    @Multipart
+    @POST("AddComment")
+    Call<ResponseBody> ADDComment(
+            @Part ("UserId") RequestBody UserId,
+            @Part ("PostId") RequestBody Title,
+            @Part ("Comment") RequestBody Latitude,
+            @Part ("Photo") MultipartBody.Part Photo
+            );
+
+
+    ////////in case of without part
+    @Multipart
+    @POST("AddComment")
+    Call<ResponseBody> ADDComment2(
+            @Part ("UserId") RequestBody UserId,
+            @Part ("PostId") RequestBody Title,
+            @Part ("Comment") RequestBody Latitude,
+            @Part ("Photo") RequestBody Photo
+    );
+
 }

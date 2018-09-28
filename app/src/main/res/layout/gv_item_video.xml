@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    >
 
     <ImageView
-        android:layout_height="130dp"
+        android:layout_height="120dp"
         android:layout_width="130dp"
-        android:padding="10dp"
+        android:padding="5dp"
         android:id="@+id/ivGallery"
         android:src="@mipmap/ic_launcher_round"
         android:scaleType="fitXY"
@@ -23,11 +23,11 @@
         />
 
     <ImageView
-        android:layout_height="45dp"
-        android:layout_width="45dp"
         android:id="@+id/play"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ic_action_play"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:scaleType="fitXY"
-        />
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_action_play" />
+
 </RelativeLayout>

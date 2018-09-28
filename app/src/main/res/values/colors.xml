@@ -14,5 +14,6 @@
     <color name="backcolorofprev">#495864</color>
     <color name="tagback">#DCDDE0</color>
     <color name="viewcolor">#F4F4F5</color>
+    <color name="likecolor">#365899</color>
 
 </resources>

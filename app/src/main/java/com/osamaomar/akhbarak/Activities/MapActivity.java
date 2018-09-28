@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -38,6 +39,14 @@ public class MapActivity extends AppCompatActivity {
         final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
         if ( !manager.isProviderEnabled( LocationManager.GPS_PROVIDER ) ) {
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+        }
+        else
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1234);
+
         }
         else {
             fragment = new Map_Select();

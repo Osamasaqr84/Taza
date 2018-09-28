@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -27,7 +28,9 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import com.osamaomar.akhbarak.API.ApiClient;
 import com.osamaomar.akhbarak.API.ApiInterface;
+import com.osamaomar.akhbarak.Activities.CreatePostActivity;
 import com.osamaomar.akhbarak.Activities.MainActivity;
+import com.osamaomar.akhbarak.Helper.FileUtils;
 import com.osamaomar.akhbarak.Helper.PreferenceHelper;
 import com.osamaomar.akhbarak.Helper.ProgressDialogHelper;
 import com.osamaomar.akhbarak.R;
@@ -36,7 +39,9 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -51,6 +56,8 @@ public class Register6Activity extends AppCompatActivity {
     String token,photo;
      String pass;
     PreferenceHelper preferenceHelper;
+    MultipartBody.Part photo_part ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,15 +130,30 @@ public class Register6Activity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 uri = result.getUri();
                 upload.setImageURI(uri);////set the image after taking it
-                Bitmap bm = BitmapFactory.decodeFile(uri.getPath());
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
-                byte[] byteArrayImage = baos.toByteArray();
-                photo = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+                photo_part =prepareFilePart("Photo" , uri);
+//
+//                Bitmap bm = BitmapFactory.decodeFile(uri.getPath());
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//                bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
+//                byte[] byteArrayImage = baos.toByteArray();
+//                photo = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
         }
+    }
+
+
+    @NonNull
+    private MultipartBody.Part prepareFilePart(String name, Uri fileUri) {
+        File file = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            file = FileUtils.getFile(Register6Activity.this, fileUri);
+        }
+        RequestBody requestFile;
+            requestFile = RequestBody.create(MediaType.parse("image/*"), file );
+
+        return MultipartBody.Part.createFormData(name, file.getName(), requestFile);
     }
 
     public void permission() {
@@ -174,7 +196,6 @@ public class Register6Activity extends AppCompatActivity {
         });
     }
 
-
     @NonNull
     private RequestBody createPartFromString(String descriptionString) {
         return RequestBody.create(
@@ -198,7 +219,7 @@ public class Register6Activity extends AppCompatActivity {
                     createPartFromString(token),
                     createPartFromString(city.getText().toString()),
                     createPartFromString(pass),
-                    createPartFromString(photo)
+                            photo_part
                   );
 
 

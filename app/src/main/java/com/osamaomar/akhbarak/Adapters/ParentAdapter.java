@@ -3,6 +3,7 @@ package com.osamaomar.akhbarak.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.osamaomar.akhbarak.Activities.LoginActivity;
 import com.osamaomar.akhbarak.Activities.PostDetailsActivity;
 import com.osamaomar.akhbarak.Assymetric.AsymmetricRecyclerView;
@@ -54,13 +56,13 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
     private int mDisplay= 3;
     private int mTotal= 0;
     private int lastPosition = -1;
-
+TextView likesCounts;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView tvTitle,description,time,dateTxt,tvPlace,inTxt,gotologin;
         public AsymmetricRecyclerView recyclerView;
-        ImageView userImage,img1,img2,img_vid;
+        ImageView userImage,img1,img2,img_vid,likeicon;
         LinearLayout like,comment,share;
- 
+        TextView liketext;
         public MyViewHolder(View view) {
             super(view);
             userImage = view.findViewById(R.id.ivProfile);
@@ -73,6 +75,9 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
             img1 = view.findViewById(R.id.image1);
             img2 = view.findViewById(R.id.image2);
             img_vid = view.findViewById(R.id.vid_play);
+            liketext = view.findViewById(R.id.liketext);
+            likeicon = view.findViewById(R.id.likeicon);
+            likesCounts = view.findViewById(R.id.likesCounts);
             recyclerView =  view.findViewById(R.id.recyclerView);
 
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext);
@@ -85,7 +90,9 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
                 @Override
                 public void onClick(View v) {
                     mContext.startActivity(new Intent(mContext, LoginActivity.class));
-
+                    liketext.setTextColor(mContext.getResources().getColor(R.color.likecolor));
+                    int count = Integer.parseInt(likesCounts.getText().toString())+1;
+                    likesCounts.setText(count+"");
                 }
             });
 
@@ -113,12 +120,21 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
         return new MyViewHolder(itemView);
     }
  
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint({"SimpleDateFormat", "CheckResult"})
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final GetPostsModel.DataBean item = mList.get(position);
         mItemList.clear();
-        holder.tvTitle.setText("محمد على");
+        holder.tvTitle.setText(mList.get(position).getUserData().getUser_Name());
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.userone);
+        requestOptions.error(R.drawable.userone);
+        if (!mList.get(position).getUserData().getUser_Photo().matches(""))
+        Glide.with(mContext)
+
+                .load(mList.get(position).getUserData().getUser_Photo()).into(holder.userImage);
+
         mTotal = item.getPhotos().size();
         try {
             holder.time.setText(reFormatTime(item.getTime()));

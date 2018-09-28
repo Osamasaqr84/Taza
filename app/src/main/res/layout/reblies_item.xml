@@ -7,51 +7,52 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="3dp"
-        android:gravity="right"
         android:layout_gravity="center"
-        android:orientation="horizontal">
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
         <ImageView
             android:id="@+id/userImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/userone"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:src="@drawable/userone" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="right"
-            android:background="@drawable/back_comment"
+            android:layout_marginEnd="13dp"
             android:layout_marginStart="13dp"
-            android:layout_marginEnd="13dp">
+            android:background="@drawable/back_comment"
+            android:gravity="right"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/userName"
+                style="@style/myCustomTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/myCustomTextStyle"
+                android:text="Mohamed jaber jabarin"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:text="Mohamed jaber jabarin"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/userComment"
+                style="@style/myCustomTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/myCustomTextStyle"
-                android:textSize="14sp"
-                android:text="الطشة معك بتفتح النفس"/>
+                android:text="الطشة معك بتفتح النفس"
+                android:textSize="14sp" />
 
             <ImageView
                 android:id="@+id/comment_img"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -72,27 +73,9 @@
             android:textSize="11sp"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="إعجاب"
-            style="@style/myCustomTextStyle"
-            android:textSize="11sp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"/>
-        <TextView
-            android:id="@+id/rebly"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="رد"
-            android:paddingLeft="10dp"
-            style="@style/myCustomTextStyle"
-            android:textSize="11sp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginStart="5dp"/>
-
 
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

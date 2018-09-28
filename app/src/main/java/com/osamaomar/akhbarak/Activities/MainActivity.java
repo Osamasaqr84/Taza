@@ -102,14 +102,12 @@ public class MainActivity extends AppCompatActivity {
         progressDialogHelper.showSimpleProgressDialog(MainActivity.this,false);
         ApiInterface apiService =  ApiClient.getClient().create(ApiInterface.class);
         Call<GetPostsModel> call = apiService.getPostsData("70");
-
         call.enqueue(new Callback<GetPostsModel>() {
             @Override
             public void onResponse(@NonNull Call<GetPostsModel> call, @NonNull Response<GetPostsModel> response) {
                 if (response.body() != null){
                     for(GetPostsModel.DataBean getPostsModel:response.body().getData()){
                         mLists.add(getPostsModel);
-
                     }
                 }
                 mAdapter = new ParentAdapter(MainActivity.this,mLists);

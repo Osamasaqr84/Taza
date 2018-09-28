@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
         gotoregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
                 startActivity(new Intent(LoginActivity.this, Register1Activity.class));
             }
